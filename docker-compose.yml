@@ -3,10 +3,10 @@ services:
     container_name: localstack_main
     image: localstack/localstack:3.5.0
     ports:
-      - "127.0.0.1:4566:4566"            # LocalStack Gateway
-      - "127.0.0.1:4510-4559:4510-4559"  # Port eksternal untuk services
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway Port
+      - "127.0.0.1:4510-4559:4510-4559"  # Port range for internal services
     environment:
-      - SERVICES=sqs,sns,lambda          # Kita hanya butuh 3 service ini
+      - SERVICES=sqs,sns,lambda          # Explicitly spin up needed services
       - AWS_DEFAULT_REGION=us-east-1
     volumes:
       - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
