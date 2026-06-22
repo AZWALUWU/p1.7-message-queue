@@ -1,0 +1,13 @@
+services:
+  localstack:
+    container_name: localstack_main
+    image: localstack/localstack:3.5.0
+    ports:
+      - "127.0.0.1:4566:4566"            # LocalStack Gateway
+      - "127.0.0.1:4510-4559:4510-4559"  # Port eksternal untuk services
+    environment:
+      - SERVICES=sqs,sns,lambda          # Kita hanya butuh 3 service ini
+      - AWS_DEFAULT_REGION=us-east-1
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"

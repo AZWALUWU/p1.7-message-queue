@@ -1,0 +1,10 @@
+# LocalStack data volume
+volume/
+.localstack/
+
+# Lambda deployment packages
+src/*.zip
+
+# OS files
+.DS_Store
+Thumbs.db
